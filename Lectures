@@ -1,0 +1,387 @@
+some useful lucture and lab codes. 
+%% 1 
+% Finding the roots
+clc; clear all; format compact;
+
+% givens
+a=2;
+b=10;
+c=12;
+% calculation the roots
+p=-b/(2*a);
+q=sqrt(b^2-4*a*c)/(2*a);
+disp('the roots are:')
+x1=p+q
+x2=p-q
+
+%% or
+fprintf('My first root is x1=%4.2f and my second root is x2=%4.2f \n',x1,x2) 
+
+%% or or
+
+X=roots([a b c])
+
+
+
+% playing with arrays
+clc; clear all; format compact;
+
+X=5;
+Y=[1, 2, 5];
+% disp(Y(2))
+Z=X*Y;
+Z_trans=Z';
+% disp(Z(end))
+% % disp(length(Y))
+% 
+% R=[1 2 nan 4 5]*5
+% disp('length of R:')
+% disp(length(R))
+
+E=[ 1 2 3 4];
+F=[7 5 9 E];
+
+% G=[1 2 3 'E']
+F(2)=6;
+disp(length(F))
+F(8)=13;
+F(15)=3;
+f(16)=sind(45);
+
+W=ones(3,1);
+Wt=ones(1,3)*5;
+
+
+coef=[1 2 0 -27]
+Roots=roots(coef)
+
+
+%% Example 1 - plotting data (two arrays)
+% Givens
+x=linspace(0,18,10); %time, sec
+y=[0 0.33 4.13 6.29 6.85 11.19 13.19 13.96 16.33 18.77]; %Distance, Ft
+
+%ploting
+figure(1)
+plot(x,y)
+
+title('Lab Experiment')
+xlabel('time, sec')
+ylabel('Distance, Ft')
+grid on
+%%  Example 2 - plotting data (from a function)
+%Givens
+z=[0:.1:10];
+w=sin(z);
+
+%part a - plotting
+figure(2)
+plot(z,w)
+title('w=sin(z)')
+ylabel('z')
+xlabel('w')
+
+%part b - locating
+w_25=w(25)
+%% Example 3 - Plotting data (with no x axis)
+%givens
+Z=[1,5,3,2];
+%plotting
+figure(3)
+plot(Z)
+%% Example 4 - Plotting multiple lines
+%givens
+X=[0:pi/100:2*pi];
+Y1=cos(X*4);
+Y2=sin(X);
+
+%Plotting
+figure(4)
+plot(X,Y1);
+hold on
+plot(X,Y2);
+hold off
+%% Example 5 - Plotting multiple lines (in one line of code)
+%givens
+X=[0:pi/100:2*pi];
+Y1=cos(X*4);
+Y2=sin(X);
+
+%Plotting
+figure(5)
+plot(X,Y1,X,Y2);
+%% Example 6 - Plotting multiple lines (in one line of code cont.)
+%givens
+X=[0:pi/100:2*pi];
+y1=cos(X)*2;
+y2=cos(X)*3;
+y3=cos(X)*4;
+y4=cos(X)*5;
+Y_all=[y1;y2;y3;y4];
+
+%Plotting
+figure(6)
+plot(X,Y_all)
+%% Example 7 - Changing colors, markers, and lines
+% Givens
+I=[1:10];
+O=[58.5 63.8 64.2 67.3 71.5 88.3 90.1 90.6 89.5 90.4];
+
+% Plotting
+figure(7)
+plot(I,O,':ok',I,O*2,'--xr',I,O/2,'-b')
+%% Example 8 - axis scaling
+% Givens
+I=[1:10];
+O=[58.5 63.8 64.2 67.3 71.5 88.3 90.1 90.6 89.5 90.4];
+
+% Plotting
+figure(8)
+plot(I,O,':ok',I,O*2,'--xr',I,O/2,'-b')
+axis([0,11,0,200])
+%% Example 9 - Annotations
+% Givens
+I=[1:10];
+O=[58.5 63.8 64.2 67.3 71.5 88.3 90.1 90.6 89.5 90.4];
+
+% Plotting
+figure(9)
+plot(I,O,':ok',I,O*2,'--xr',I,O/2,'-b')
+axis([0,11,0,200])
+
+%Legend
+legend('line 1','line 2', 'line 3')
+%text lable
+text(1,100,'lable points with text command')
+%axis lable
+xlabel('My x lable')
+ylabel('My Y lable')
+% Title
+title('Example plot')
+
+%% Example 10 - Subplots
+S=0:pi/20:2*pi;
+figure(10)
+subplot(2,1,1)
+plot(S,sin(S))
+subplot(2,1,2)
+plot(S,sin(2*S))
+%% Example 11 - Plotting single array of imaginary terms
+I=[0+0j 1+2j 2+5j 3+4j];
+figure(11)
+plot(I)
+xlabel('Real components')
+ylabel('Imaginary components')
+%% Example 12 - Plotting multiple arrays of imaginary terms
+I=[0+0j 1+2j 2+5j 3+4j]
+J=sin(I)
+figure(12)
+plot(I,J)
+
+
+
+% Playing with Graphs day two
+clc; clear all; format compact;
+
+%% Polar plot
+x=0:pi/100:pi;
+y=sin(x);
+figure(1)
+polar(x,y)
+%% log plots
+x=0:0.5:50;
+y=5*x.^2;
+% x-y plot (linear linear plot)
+figure(2)
+subplot(2,2,1)
+plot(x,y)
+title( 'polynomial - linear linear')
+ylabel('y')
+grid on
+% semilogx (log_x-linear_y plot)
+subplot(2,2,2)
+semilogx(x,y)
+title( 'polynomial - log linear')
+ylabel('y')
+grid on
+% semilogy (linear_x-log_y plot)
+subplot(2,2,3)
+semilogy(x,y)
+title( 'polynomial - linear log')
+ylabel('y')
+xlabel('x')
+grid on
+% loglog (log_x-log_y plot)
+subplot(2,2,4)
+loglog(x,y)
+title( 'polynomial - log log')
+ylabel('y')
+xlabel('x')
+grid on
+%% bar graphs and pie plots
+x=[1 2 5 4 8];
+y=[x;1:5];
+figure(3)
+subplot(2,2,1)
+bar(x)
+title('a bargraph of vector x')
+subplot(2,2,2)
+bar(y)
+title('a bargraph of matrix y')
+subplot(2,2,3)
+bar3(y)
+title('a 3D bargraph of matrix y')
+subplot(2,2,4)
+pie(x)
+title('a pie chart of x')
+%% histogram
+x=[100 95 74 87 22 78 34 35 93 88 86 42 55 48];
+figure(4)
+histogram(x,10)
+%% two y axis
+x=0:pi/20:2*pi;
+y1=sin(x);
+y2=exp(x);
+%single y axis
+figure(5)
+plot(x,y1,x,y2)
+% two y axis
+figure(6)
+plotyy(x,y1,x,y2)
+title('Two Y-Axis scaled')
+xlabel('Angle')
+ylabel('Left Label')
+% two y axis better
+figure(7)
+a=plotyy(x,y1,x,y2)
+title('Two Y-Axis scaled')
+xlabel('Angle')
+ylabel(a(1),'Left Label')
+ylabel(a(2),'Right Label')
+% two y axis better (alt)
+figure(8)
+yyaxis left
+plot(x,y1)
+ylabel('Left Label')
+title('Two Y-Axis scaled')
+xlabel('Angle')
+yyaxis right
+plot(x,y2)
+ylabel('Right Label')
+%% Function plotting
+figure(9)
+fplot(@(x) sin(x),[-2*pi,2*pi])
+%% 3D plotting
+x=linspace(0,10*pi,1000);
+y= cos(x);
+z=sin(x);
+figure(10)
+plot3(x,y,z)
+grid on
+xlabel('angle')
+ylabel('cos(x)')
+zlabel('sin(x)')
+title('Spring')
+%% 3D surface color
+r=10;
+[X,Y,Z] = sphere;
+
+X2=X*r;
+Y2=Y*r;
+Z2=Z*r;
+figure(11)
+surf(X2,Y2,Z2);
+colormap hot
+%% 3D
+t=0:pi/100:4*pi;
+[X,Y]=meshgrid(t,t);
+Z=sin(X)+cos(Y);
+figure(12)
+contourf(X,Y,Z,10)
+
+
+% Playing with matrices
+clc; clear all; format compact;
+%% matrix inro
+A=[1 2 3
+    4 5 6
+    7 8 9];
+A(2,1)
+% or we can do 
+A=[1 2 3;4 5 6;7 8 9];
+A(2,3)
+%% Extracting sub matrix
+A=[1 2 3;4 5 6;7 8 9];
+A(1:2,1:3) %extract rows 1 to 2 and colums 1 to 3
+% or we can do 
+A(1:2,:) %extract rows 1 to 2 and all colums
+%% Size and length
+A=A(1:2,:); % redefined A using A
+%size
+S=size(A) % returns row vector s=[m,n]
+%size
+[r,c]=size(A) % returns r (rows) and c (colums)
+%size
+r=size (A,1) % returns just r (rows)
+c=size(A,2) % returns just c (colums)
+%length
+n=length(A) % returns largest value between r and c
+%% Transpose
+x=0:4
+x'
+%% Transpose 2
+x=0:4;
+y=5:5:25;
+A=[x' y']
+%% Scalar-Array mathematics
+f=[1 2 3; 4 5 6]
+g=2*f-1
+%% Matrix Multiplication
+A=[2 5 1; 0 3 -1];
+B=[1 0 2; -1 4 -2;5 2 1];
+C=A*B
+% C=B*A this one doesnt work because the dimentions dont match
+%% ones
+O=ones(3)
+O2=ones(2,3)
+%% zeros
+Z=zeros(3)
+Z2=zeros(3,2)
+%% Identity matrix
+I=eye(3)
+I2=eye(2,3)
+%% Determinant
+A=[2 -4; 3 6];
+det(A)
+%% Inverse
+A=[2 -4; 3 6];
+inv(A)
+%% system of equations Ax=B
+A=[2 9;3 -4];
+b=[5;7];
+% inverse method
+x=inv(A)*b
+% left division method
+x=A\b
+% reduced row rechelon form method
+Ab=[A b]
+R=rref(Ab)
+x=R(:,end)
+%% playing with matricies
+H=[1 2 3 4; 5 6 7 8; 9 10 11 12; 13 14 15 16]
+% g as the transpose of the center of H
+g=H(2:3,2:3)'
+% F to be the size of g using first row of h
+[r,c]=size(g)
+F(1,1:2)=H(1,1:2);
+F(2,1:2)=H(1,3:4);
+F
+% d as the element by element multiplication of g and f
+d=g.*F
+% q as the square matrix of the last column of h
+q(1,1:2)=H(1:2,4);
+q(2,1:2)=H(3:4,4);
+q
+% j as d^9
+j=d.^q
+
